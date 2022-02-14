@@ -1,0 +1,24 @@
+{
+  "name": "publisher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js --dir=\"C:\\Users\\Tomer Lilush\\Desktop\\terraform\\src\" --hostname=\"org.lightlytics.com\" --plan=\"C:\\Users\\Tomer Lilush\\Desktop\\terraformdemo\\plan.txt\" --graph=\"C:\\Users\\Tomer Lilush\\Desktop\\terraform\\src\\graph.dot\" --token=\"collection-token\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightlytics/publisher-standalone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lightlytics/publisher/issues"
+  },
+  "homepage": "https://github.com/lightlytics/publisher#readme",
+  "dependencies": {
+    "got": "^11.8.2",
+    "minimist": "^1.2.5"
+  }
+}
