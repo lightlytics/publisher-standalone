@@ -24,7 +24,7 @@ const requiredArgs = ['dir', 'hostname', 'plan', 'graph', 'token']
 
 requiredArgs.forEach(requiredArg => {
   if(!args[requiredArg])
-    throw new ArgsException(`Missing arg - \"${requiredArg}\" usage: node index.js \"./working-dir\" \"org.lightlytics.com\" \"./working-dir/plan.json\" \"./working-dir/graph.dot\" \"collection-token\"`)
+    throw new ArgsException(`Missing arg - \"${requiredArg}\" usage: node index.js --${requiredArg}=value. try --help if needed`)
 })
 
 const workingDirArg = args['dir']
