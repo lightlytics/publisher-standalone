@@ -1,0 +1,10 @@
+{
+  "Modules": [
+    {
+      "Key": "vpc",
+      "Source": "registry.terraform.io/terraform-aws-modules/vpc/aws",
+      "Version": "3.11.0",
+      "Dir": ".terraform/modules/vpc"
+    }
+  ]
+}

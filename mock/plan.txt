@@ -1,0 +1,39 @@
+{
+  "outputs": {
+    "private_ip": {
+      "value": "192.168.3.2",
+      "sensitive": false
+    }
+  },
+  "root_module": {
+    "resources": [
+      {
+        "address": "aws_instance.example[1]",
+        "mode": "managed",
+        "type": "aws_instance",
+        "name": "example",
+        "index": 1,
+        "provider_name": "aws",
+        "schema_version": 2,
+        "values": {
+          "id": "i-abc123",
+          "instance_type": "t2.micro"
+        },
+
+        "values": {
+          "id": true
+        }
+      }
+    ],
+    "child_modules": [
+      {
+        "address": "module.child",
+        "resources": [
+            {
+              "address": "module.child.aws_instance.foo"
+            }
+        ]
+      }
+    ]
+  }
+}
