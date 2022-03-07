@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js --dir=\"./mock\" --hostname=\"org.lightlytics.com\" --plan=\"./mock/plan.txt\" --graph=\"./mock/graph.dot\" --token=\"collection-token\""
+    "start": "node index.js --dir=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\" --hostasdname=\"org.lightlytics.com\" --plan=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\\plan.txt\" --graph=\"./mock/graph.dot\" --token=\"collection-token\""
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/lightlytics/publisher-standalone#readme",
   "dependencies": {
     "got": "^11.8.2",
+    "lightlytics-publisher-core": "^1.0.4",
     "minimist": "^1.2.5"
   }
 }
