@@ -8,11 +8,11 @@ try {
     throw "Expected usage: node index.js --dir=\"./working-dir\" --hostname=\"org.lightlytics.com\" --plan=\"./working-dir/plan.json\" --graph=\"./working-dir/graph.dot\" --token=\"collection-token\""
   }
 
-  if (Object.keys(args).length - 1 < 5) {
+  const requiredArgs = ['dir', 'hostname', 'plan', 'graph', 'token']
+
+  if (Object.keys(args).length <= requiredArgs.length) {
     throw "Expected at least 4 cli arguments. usage: node index.js --dir=\"./working-dir\" --hostname=\"org.lightlytics.com\" --plan=\"./working-dir/plan.json\" --graph=\"./working-dir/graph.dot\" --token=\"collection-token\""
   }
-
-  const requiredArgs = ['dir', 'hostname', 'plan', 'graph', 'token']
 
   requiredArgs.forEach(requiredArg => {
     if (!args[requiredArg]) {
