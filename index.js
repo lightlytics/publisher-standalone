@@ -29,7 +29,7 @@ try {
 
   publish({apiUrl, tfWorkingDir, tfPlan, tfGraph, collectionToken})
     .then(({eventId, customerId}) => {
-      logFormattedSimulation(`https://${hostname}/w/${customerId}/simulations/${eventId}`)
+      logFormattedSimulation(`https://${apiUrl}/w/${customerId}/simulations/${eventId}`)
     }).catch(error => console.error(error));
 } catch (error) {
   console.error(error)
