@@ -25,9 +25,15 @@ try {
   const tfPlan = args['plan']
   const tfGraph = args['graph']
   const collectionToken = args['token']
+  const metadata = {source: {format: 'Terraform'}}
+  const optionalMetadataArgs = ['name', 'type', 'format', 'branch', 'base_branch', 'commit_hash', 'pr_id', 'repository', 'user_name']
+  optionalMetadataArgs.map(arg => {
+    if (args[arg]) {
+      metadata['source'][arg] = args[arg]
+    }
+  })
 
-
-  publish({apiUrl, tfWorkingDir, tfPlan, tfGraph, collectionToken})
+  publish({apiUrl, tfWorkingDir, tfPlan, tfGraph, collectionToken, metadata})
     .then(({eventId, customerId}) => {
       logFormattedSimulation(`https://${apiUrl}/w/${customerId}/simulations/${eventId}`)
     }).catch(error => console.error(error));
