@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js --dir=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\" --hostname=\"org.lightlytics.com\" --plan=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\\plan.txt\" --graph=\"./mock/graph.dot\" --token=\"collection-token\""
+    "start": "node index.js --dir=\"./mock\" --hostname=\"org.lightlytics.com\" --plan=\"./mock/plan.txt\" --graph=\"./mock/graph.dot\" --token=\"collection-token\""
   },
   "repository": {
     "type": "git",
