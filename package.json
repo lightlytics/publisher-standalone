@@ -19,8 +19,7 @@
   },
   "homepage": "https://github.com/lightlytics/publisher-standalone#readme",
   "dependencies": {
-    "got": "^11.8.2",
-    "lightlytics-publisher-core": "^1.0.5",
+    "lightlytics-publisher-core": "^1.0.10",
     "minimist": "^1.2.6"
   }
 }

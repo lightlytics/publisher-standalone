@@ -1,5 +1,8 @@
 import minimist from 'minimist'
-import {publish} from 'lightlytics-publisher-core'
+import {publish, poll} from 'lightlytics-publisher-core'
+
+const pollTimeoutDefault = 10 // minutes
+const pollIntervalDefault = 5000
 
 try {
   const args = minimist(process.argv.slice(2))
@@ -33,10 +36,26 @@ try {
     }
   })
 
-  publish({apiUrl, tfWorkingDir, tfPlan, tfGraph, collectionToken, metadata})
-    .then(({eventId, customerId}) => {
-      logFormattedSimulation(`https://${apiUrl}/w/${customerId}/simulations/${eventId}`)
-    }).catch(error => console.error(error));
+  const {eventId, customerId} = await publish({apiUrl, tfWorkingDir, tfPlan, tfGraph, collectionToken, metadata})
+
+  if (args['poll']) {
+    await poll({
+      apiUrl,
+      collectionToken,
+      customerId,
+      eventId,
+      pollTimeout: args['pollTimeout'] ? Number(args['pollTimeout']) : pollTimeoutDefault,
+      pollInterval: args['pollInterval'] ? Number(args['pollInterval']) : pollIntervalDefault,
+      onStatusUpdate: (status, markdownOutput) => {
+        if (status.conclusion) {
+          console.log(markdownOutput)
+        }
+      }
+    })
+  } else {
+    logFormattedSimulation(`https://${apiUrl}/w/${customerId}/simulations/${eventId}`)
+  }
+
 } catch (error) {
   console.error(error)
 }
