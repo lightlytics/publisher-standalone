@@ -42,3 +42,4 @@ The Publisher required arguments input (**in this exact order**):
       conclusion
     * 'pollTimeout' - (Minutes - Default: 10) after this period, polling will stop with 'Timed-out' status
     * 'pollInterval' - (Milliseconds - Default: 5000) Interval of which each request should be made
+    * 'markdown' - when specified, will print simulation output in markdown form rather than CLI table

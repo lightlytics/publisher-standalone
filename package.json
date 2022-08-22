@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js --dir=\"./mock\" --hostname=\"org.lightlytics.com\" --plan=\"./mock/plan.txt\" --graph=\"./mock/graph.dot\" --token=\"collection-token\""
+    "start": "node index.js --dir=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\" --hostname=\"iamlogs.lightops.io\" --plan=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\\plan.txt\" --graph=\"./mock/graph.dot\" --token=\"WiYr1z-qaEzqnp3nv2dmaUYiumAXOSe5vTmfMNSq8Co\" --poll"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/lightlytics/publisher-standalone#readme",
   "dependencies": {
-    "lightlytics-publisher-core": "^1.0.10",
+    "@colors/colors": "^1.5.0",
+    "cli-table3": "^0.6.2",
+    "lightlytics-publisher-core": "^1.1.1",
     "minimist": "^1.2.6"
   }
 }
