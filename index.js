@@ -2,7 +2,6 @@ import minimist from 'minimist'
 import {publish, poll, getMarkdownComment} from 'lightlytics-publisher-core'
 import Table from 'cli-table3'
 import colors from '@colors/colors'
-import {Octokit} from "@octokit/rest"
 
 const pollTimeoutDefault = 10 // minutes
 const pollIntervalDefault = 5000
@@ -42,29 +41,6 @@ try {
   const {eventId, customerId} = await publish({apiUrl, tfWorkingDir, tfPlan, tfGraph, collectionToken, metadata})
 
   if (args['poll']) {
-    const details_url = `https://${apiUrl}/w/${customerId}/simulations/${eventId}`
-
-    let octokit, githubCheckId
-    if (args['github-token'] && args['commit_hash']) {
-      octokit = new Octokit({
-        auth: args['github-token']
-      })
-      const res = await octokit.rest.checks.create({
-        owner: args['user_name'],
-        repo: String(args['repository']).split('/')[1],
-        name: `Lightlytics Simulation - ${tfWorkingDir}`,
-        head_sha: args['commit_hash'],
-        status: 'queued', // queued, in_progress, completed
-        details_url,
-        external_id: eventId,
-        output: {
-          title: 'Simulation is pending',
-          summary: '',
-        }
-      })
-      githubCheckId = res?.data?.id
-    }
-
     await poll({
       apiUrl,
       collectionToken,
@@ -73,22 +49,9 @@ try {
       pollTimeout: args['pollTimeout'] ? Number(args['pollTimeout']) : pollTimeoutDefault,
       pollInterval: args['pollInterval'] ? Number(args['pollInterval']) : pollIntervalDefault,
       onStatusUpdate: (status, violations) => {
-
-        if (githubCheckId) {
-          const markdownOutput = getMarkdownComment(status, violations, details_url)
-          octokit.rest.checks.update({
-            owner: args['user_name'],
-            repo: String(args['repository']).split('/')[1],
-            check_run_id: githubCheckId,
-            ...status,
-            output: {
-              title: status.label,
-              summary: status.conclusion ? markdownOutput : '',
-            }
-          }).catch(() => console.log('failed to update with checks api'))
-        }
-
         if (status.conclusion) {
+          const details_url = `https://${apiUrl}/w/${customerId}/simulations/${eventId}`
+
           args['markdown'] ?
             console.log(getMarkdownComment(status, violations, details_url)) :
             printCLI(status, violations, details_url)
