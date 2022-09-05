@@ -21,6 +21,7 @@ The Publisher required arguments input (**in this exact order**):
 * **'hostname'** - The organization specific Lightlytics URL. *eg. org.lightlytics.com*
 * **'plan'** - A Terraform plan in **JSON** format that was generated using
   the `terraform show -json ./terraform.plan > ./plan.json` command.
+    * Alternatively - For Terraform Cloud, 'tfc-token' and 'tfc-run-id'
 * **'graph'** - A Terraform graph in dot format that was generated using the `terraform graph -type=plan > ./graph.dot`
   command.
 * **'token'** - The AWS account's specific collection token (can be found on Lightlytics UI -> settings -> Integrations

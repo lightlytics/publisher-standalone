@@ -13,7 +13,7 @@ try {
     throw "Expected usage: node index.js --dir=\"./working-dir\" --hostname=\"org.lightlytics.com\" --plan=\"./working-dir/plan.json\" --graph=\"./working-dir/graph.dot\" --token=\"collection-token\""
   }
 
-  const requiredArgs = ['dir', 'hostname', 'plan', 'graph', 'token']
+  const requiredArgs = ['dir', 'hostname', 'graph', 'token']
 
   if (Object.keys(args).length <= requiredArgs.length) {
     throw `Expected at least ${requiredArgs.length} cli arguments. usage: node index.js --dir=\"./working-dir\" --hostname=\"org.lightlytics.com\" --plan=\"./working-dir/plan.json\" --graph=\"./working-dir/graph.dot\" --token=\"collection-token\"`
@@ -28,6 +28,8 @@ try {
   const tfWorkingDir = args['dir']
   const apiUrl = args['hostname']
   const tfPlan = args['plan']
+  const tfcToken = args['tfc-token']
+  const tfcRunId = args['tfc-run-id']
   const tfGraph = args['graph']
   const collectionToken = args['token']
   const metadata = {source: {format: 'Terraform'}}
@@ -38,7 +40,16 @@ try {
     }
   })
 
-  const {eventId, customerId} = await publish({apiUrl, tfWorkingDir, tfPlan, tfGraph, collectionToken, metadata})
+  const {eventId, customerId} = await publish({
+    apiUrl,
+    tfWorkingDir,
+    tfPlan,
+    tfcToken,
+    tfcRunId,
+    tfGraph,
+    collectionToken,
+    metadata
+  })
 
   if (args['poll']) {
     await poll({
