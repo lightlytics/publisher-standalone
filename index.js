@@ -66,13 +66,16 @@ try {
           args['markdown'] ?
             console.log(getMarkdownComment(status, violations, details_url)) :
             printCLI(status, violations, details_url)
+
+          if (status.conclusion !== 'success') {
+            process.exit(1)
+          }
         }
       }
     })
   } else {
     logFormattedSimulation(`https://${apiUrl}/w/${customerId}/simulations/${eventId}`)
   }
-
 } catch (error) {
   console.error(error)
 }
