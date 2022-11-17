@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js --dir=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\" --hostname=\"iamlogs.lightops.io\" --plan=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\\plan.txt\" --graph=\"./mock/graph.dot\" --token=\"WiYr1z-qaEzqnp3nv2dmaUYiumAXOSe5vTmfMNSq8Co\" --poll"
+    "start": "node index.js --dir=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\" --hostname=\"iamlogs.lightops.io\" --plan=\"C:\\Users\\Tomer Lilush\\Desktop\\publisher-standalone\\mock\\plan.txt\" --graph=\"./mock/graph.dot\" --token=\"WiYr1z-qaEzqnp3nv2dmaUYiumAXOSe5vTmfMNSq8Co\" --poll --github-token=\"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\" --commit_hash=\"b208b3becf59fa2543a63ec7c07ad8d3d4c0ccbd\" --user_name=\"shelegspalter\" --repository=\"shelegspalter/testatlasian\""
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@colors/colors": "^1.5.0",
     "cli-table3": "^0.6.2",
-    "lightlytics-publisher-core": "^1.1.3",
+    "lightlytics-publisher-core": "^1.1.6",
     "minimist": "^1.2.6"
   }
 }

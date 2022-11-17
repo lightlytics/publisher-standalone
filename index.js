@@ -122,12 +122,14 @@ function printCLI(status, violations = [], details_url) {
 
 function severityToColorCLI(severity) {
   switch (severity) {
-    case 'critical':
+    case 4:
       return colors.red('Critical')
-    case 'warning':
-      return colors.yellow('Warning')
-    case 'info':
-      return colors.gray('Info')
+    case 3:
+      return colors.red('High')
+    case 2:
+      return colors.yellow('Medium')
+    case 1:
+      return colors.gray('Low')
   }
 
   return severity
